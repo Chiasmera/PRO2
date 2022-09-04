@@ -14,16 +14,17 @@ public class TowerOfHanoi {
         return result;
     }
 
-    private static int flyt(int ringe, int from, int to) {
+    private static int flyt(int ringe, int startRing, int endRing) {
         int result = 0;
-        int mellemstation = 6-from-to;
+
+        int mellemstation = 6-startRing-endRing;
 
         if (ringe == 1) {
             result = 1;
         } else {
-            result = result + flyt(ringe-1, from, mellemstation);
-            result = result + flyt(1,from, to); //kan udskiftes med result++
-            result = result + flyt(ringe-1,mellemstation,to);
+            result = result + flyt(ringe-1, startRing, mellemstation);
+            result = result + flyt(1,startRing, endRing); //effektivt bare result++
+            result = result + flyt(ringe-1,mellemstation,endRing);
         }
 
         return result;
