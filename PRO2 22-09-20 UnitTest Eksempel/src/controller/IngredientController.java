@@ -15,16 +15,18 @@ public class IngredientController implements IngredientControllerI {
     @Override
     public Ingredient storeIngredient(Ingredient ingredient) {
         Ingredient ingredientStored = ingredients.get(ingredient.getName());
-        if (ingredient.getUnit().equals(ingredientStored.getUnit())) {
-            if (ingredientStored != null) {
+
+        if (ingredientStored != null) {
+            if (ingredient.getUnit().equals(ingredientStored.getUnit())) {
                 ingredientStored.setAmount(ingredientStored.getAmount() + ingredient.getAmount());
                 return ingredientStored;
             } else {
-                ingredients.put(ingredient.getName(), ingredient);
-                return ingredient;
+                String message = "Mismatch in ingedient unit and the stored ingredient unit. This ingredient uses the unit: " + ingredient.getUnit() + " while the stored ingredient uses the " + ingredientStored.getUnit() + " unit.";
+                throw new RuntimeException(message);
             }
         } else {
-            throw new RuntimeException("Mismatch in ingedient unit and the stored ingredient unit. This ingredient uses the unit: " + ingredient.getUnit() + " while the stored ingredient uses the " + ingredientStored.getUnit() + " unit.");
+            ingredients.put(ingredient.getName(), ingredient);
+            return ingredient;
         }
     }
 
@@ -32,7 +34,12 @@ public class IngredientController implements IngredientControllerI {
     public void collectIngredient(String name, int amount) {
         Ingredient ingredientStored = ingredients.get(name);
         if (ingredientStored != null) {
-            ingredientStored.setAmount(ingredientStored.getAmount() - amount);
+            if (ingredientStored.getAmount() - amount >= 0) {
+                ingredientStored.setAmount(ingredientStored.getAmount() - amount);
+            } else {
+                throw new RuntimeException("Not enough "+ingredientStored.getName()+". Supply only contains "+ingredientStored.getAmount()+" "+ingredientStored.getUnit());
+            }
+
         } else {
             String message = String.format("No supply of '%s' registered", name);
             throw new RuntimeException(message);
