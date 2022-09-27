@@ -16,7 +16,7 @@ class IngredientControllerTest {
         Ingredient testIngredient1 = new Ingredient("Mel", Ingredient.Unit.GRAM, 200);
         Ingredient testIngredient2 = new Ingredient("Mel", Ingredient.Unit.TSP, 5);
         ingredientController.storeIngredient(testIngredient1);
-        String errormessage ="Mismatch in ingedient unit and the stored ingredient unit. This ingredient uses the unit: " + Ingredient.Unit.TSP+ " while the stored ingredient uses the " + Ingredient.Unit.GRAM + " unit.";
+        String errormessage ="Mismatch in ingredient unit and the stored ingredient unit. This ingredient uses the unit: " + Ingredient.Unit.TSP+ " while the stored ingredient uses the " + Ingredient.Unit.GRAM + " unit.";
 
         //Act & Assert
         Exception exception = assertThrows(RuntimeException.class, () -> ingredientController.storeIngredient(testIngredient2));

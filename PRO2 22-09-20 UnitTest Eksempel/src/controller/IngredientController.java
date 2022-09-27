@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class IngredientController implements IngredientControllerI {
 
-    private HashMap<String, Ingredient> ingredients;
+    private final HashMap<String, Ingredient> ingredients;
 
     public IngredientController() {
         this.ingredients = new HashMap<>();
@@ -21,7 +21,7 @@ public class IngredientController implements IngredientControllerI {
                 ingredientStored.setAmount(ingredientStored.getAmount() + ingredient.getAmount());
                 return ingredientStored;
             } else {
-                String message = "Mismatch in ingedient unit and the stored ingredient unit. This ingredient uses the unit: " + ingredient.getUnit() + " while the stored ingredient uses the " + ingredientStored.getUnit() + " unit.";
+                String message = "Mismatch in ingredient unit and the stored ingredient unit. This ingredient uses the unit: " + ingredient.getUnit() + " while the stored ingredient uses the " + ingredientStored.getUnit() + " unit.";
                 throw new RuntimeException(message);
             }
         } else {

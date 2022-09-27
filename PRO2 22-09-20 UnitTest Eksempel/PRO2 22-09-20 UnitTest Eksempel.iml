@@ -41,6 +41,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="byte-buddy-1.12.7" level="application" />
   </component>
 </module>
