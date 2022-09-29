@@ -69,7 +69,7 @@ public class ObservableBag implements Bag, Iterable<String>  {
 
     @Override
     public Iterator<String> iterator() {
-        return null;
+        return hashmap.keySet().iterator();
     }
 
     @Override
