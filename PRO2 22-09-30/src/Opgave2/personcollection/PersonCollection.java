@@ -44,7 +44,7 @@ public class PersonCollection implements Iterable<Person> {
 
     /**
      * Adds the person at the index. Throws IndexOutOfBoundsException if index is
-     * not in [0, size()].
+     * not in [0, size()]. Person cannot be null.
      */
     public void add(int index, Person person) {
         if (index < 0 || index > this.size) {
@@ -55,7 +55,6 @@ public class PersonCollection implements Iterable<Person> {
         }
         this.persons[index] = person;
         this.size++;
-
     }
 
     /**
