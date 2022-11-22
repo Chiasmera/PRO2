@@ -66,5 +66,22 @@ class LinkedListTrain2Test {
         wagonSelected = wagonSelected.getNextWagon();
         assertEquals(wagon5, wagonSelected);
 
+        wagonSelected = train.getLast();
+        assertEquals(wagon5, wagonSelected);
+
+        wagonSelected = wagonSelected.getPreviousWagon();
+        assertEquals(wagon4, wagonSelected);
+
+        wagonSelected = wagonSelected.getPreviousWagon();
+        assertEquals(wagon3, wagonSelected);
+
+        wagonSelected = wagonSelected.getPreviousWagon();
+        assertEquals(wagon2, wagonSelected);
+
+        wagonSelected = wagonSelected.getPreviousWagon();
+        assertEquals(wagon1, wagonSelected);
+
+        wagonSelected = wagonSelected.getPreviousWagon();
+        assertEquals(locomotive, wagonSelected);
     }
 }
