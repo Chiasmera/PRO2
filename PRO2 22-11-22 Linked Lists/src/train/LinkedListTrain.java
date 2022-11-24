@@ -82,17 +82,22 @@ public class LinkedListTrain {
      * <code>false</code> otherwise
      */
     public boolean remove(WagonNode wagon) {
-        // TODO: Assignment 4: Implement this remove method...
         boolean found = false;
         WagonNode previous = firstWagon;
-        while (!found && previous.getNextWagon() != null) {
-            if (previous.getNextWagon().equals(wagon)) {
-                WagonNode temp = previous.getNextWagon();
-                previous.setNextWagon(temp.getNextWagon());
-                temp.setNextWagon(null);
-                found = true;
-            } else {
-                previous = previous.getNextWagon();
+        if (firstWagon.equals(wagon)) {
+            firstWagon = firstWagon.getNextWagon();
+            wagon.setNextWagon(null);
+            found = true;
+        } else {
+            while (!found && previous.getNextWagon() != null) {
+                if (previous.getNextWagon().equals(wagon)) {
+                    WagonNode temp = previous.getNextWagon();
+                    previous.setNextWagon(temp.getNextWagon());
+                    temp.setNextWagon(null);
+                    found = true;
+                } else {
+                    previous = previous.getNextWagon();
+                }
             }
         }
         return found;
@@ -106,29 +111,32 @@ public class LinkedListTrain {
      * @param position the position where to add the wagon node
      */
     public void insertAt(WagonNode wagon, int position) {
-        // TODO: Assignment 5: Implement this insert method...'
         if (position == 0) {
             addFirst(wagon);
         } else {
             int indexCount = 1;
             WagonNode previous = firstWagon;
-            while (indexCount != position) {
+            while (indexCount < position && previous.getNextWagon() != null) {
                 previous = previous.getNextWagon();
                 ;
                 indexCount++;
             }
-            wagon.setNextWagon(previous.getNextWagon());
-            previous.setNextWagon(wagon);
+             if (previous.getNextWagon() == null) {
+                wagon.setNextWagon(null);
+                previous.setNextWagon(wagon);
+            } else {
+                 wagon.setNextWagon(previous.getNextWagon());
+                 previous.setNextWagon(wagon);
+             }
         }
 
         /*throw new UnsupportedOperationException("Not implemented");*/
     }
 
     /**
-     *
      * @param wagon
      */
-    public void setFirstWagon (WagonNode wagon) {
+    public void setFirstWagon(WagonNode wagon) {
         firstWagon = wagon;
     }
 }

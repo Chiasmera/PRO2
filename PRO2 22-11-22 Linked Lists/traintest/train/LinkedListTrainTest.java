@@ -194,11 +194,26 @@ class LinkedListTrainTest
 
         wagonWasRemoved = train.remove(wagon4);
         assertFalse(wagonWasRemoved);
+
+        boolean wagonWasRemovedFirst = train.remove(locomotive);
+        assertTrue(wagonWasRemovedFirst);
+
+        boolean wagonWasRemovedLast = train.remove(wagon5);
+        assertTrue(wagonWasRemovedLast);
+
+        wagonSelected = train.getFirst();
+        assertEquals(wagon1, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon2, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon3, wagonSelected);
     }
 
     @Test
     @Order(5)
-    void test_linkedListTrain_canInsertWagonAtPosition()
+    void test_linkedListTrain_canInsertWagonAtPosition4()
     {
         // --------------------------------------------------
         // ARRANGE
@@ -238,5 +253,93 @@ class LinkedListTrainTest
 
         wagonSelected = wagonSelected.getNextWagon();
         assertEquals(wagon5, wagonSelected);
+    }
+
+    @Test
+    @Order(5)
+    void test_linkedListTrain_canInsertWagonAtPosition0()
+    {
+        // --------------------------------------------------
+        // ARRANGE
+        // --------------------------------------------------
+
+        LinkedListTrain train = new LinkedListTrain();
+        train.addFirst(wagon5);
+        train.addFirst(wagon3);
+        train.addFirst(wagon2);
+        train.addFirst(wagon1);
+        train.addFirst(locomotive);
+
+        // --------------------------------------------------
+        // ACT
+        // --------------------------------------------------
+
+        train.insertAt(wagon4, 0);
+
+        // --------------------------------------------------
+        // ASSERT
+        // --------------------------------------------------
+
+        WagonNode wagonSelected = train.getFirst();
+        assertEquals(wagon4, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(locomotive, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon1, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon2, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon3, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon5, wagonSelected);
+    }
+
+    @Test
+    @Order(5)
+    void test_linkedListTrain_canInsertWagonAtPosition8()
+    {
+        // --------------------------------------------------
+        // ARRANGE
+        // --------------------------------------------------
+
+        LinkedListTrain train = new LinkedListTrain();
+        train.addFirst(wagon5);
+        train.addFirst(wagon3);
+        train.addFirst(wagon2);
+        train.addFirst(wagon1);
+        train.addFirst(locomotive);
+
+        // --------------------------------------------------
+        // ACT
+        // --------------------------------------------------
+
+        train.insertAt(wagon4, 12);
+
+        // --------------------------------------------------
+        // ASSERT
+        // --------------------------------------------------
+
+        WagonNode wagonSelected = train.getFirst();
+        assertEquals(locomotive, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon1, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon2, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon3, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon5, wagonSelected);
+
+        wagonSelected = wagonSelected.getNextWagon();
+        assertEquals(wagon4, wagonSelected);
     }
 }
