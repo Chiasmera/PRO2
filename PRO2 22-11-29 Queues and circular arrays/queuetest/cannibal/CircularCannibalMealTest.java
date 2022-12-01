@@ -105,11 +105,23 @@ class CircularCannibalMealTest {
         System.out.println("Persons remaining: ");
         festMaeltid.printPersons();
 
-        eatenPerson = festMaeltid.eatNextPerson(1);
-        assertEquals(person4, eatenPerson);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        assertEquals(person10, eatenPerson);
 
         System.out.println("Person eaten: "+eatenPerson);
         System.out.println("Persons remaining: ");
+        festMaeltid.printPersons();
+
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+        eatenPerson = festMaeltid.eatNextPerson(5);
+
         festMaeltid.printPersons();
 
 
