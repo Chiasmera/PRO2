@@ -12,9 +12,7 @@ public class Validator {
 
     //Methods - Other ------------------------------------------------------------------------------------------------
     public boolean validateBrackets(String expression) {
-        boolean result = true;
         NodeStack stack = new NodeStack();
-
         for (int i = 0; i < expression.length(); i++) {
             char currentChar = expression.charAt(i);
             if (currentChar == '(' || currentChar == '{' || currentChar == '[') {
@@ -23,16 +21,10 @@ public class Validator {
                 char stackTop = (char) stack.peek();
                 if ((currentChar == ')' && stackTop == '(') || (currentChar == '}' && stackTop == '{') || (currentChar == ']' && stackTop == '[')) {
                   stack.pop();
-                } else {
-                    result = false;
-                    break;
                 }
             }
         }
-        if (!stack.isEmpty()) {
-            result = false;
-        }
-        return result;
+        return stack.isEmpty();
     }
 
 }
