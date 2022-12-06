@@ -55,7 +55,6 @@ public class HashSetLinearProbing {
         int currentPosition = hashCode;
         boolean found = false;
         boolean currentEmpty = false;
-        //continues through the array until either: an object matching the hashcode is found, or an empty space is found.
         while (!found && !currentEmpty) {
             if (buckets[currentPosition] == null || buckets[currentPosition].equals(DELETED)) {
                 currentEmpty = true;
@@ -71,7 +70,6 @@ public class HashSetLinearProbing {
             }
         }
 
-        //Return false if match was found, true otherwise
         return !found;
     }
 
@@ -87,16 +85,11 @@ public class HashSetLinearProbing {
         boolean found = false;
         boolean fullLoop = false;
         boolean emptyFound = false;
-        //While object is not found, an empty space is not encountered and the whole list is not looped through...
         while (!found && !fullLoop && !emptyFound) {
-
-
-            //if the current space has a matching object, delete it and srt found to true
             if (buckets[currentPos].equals(x)) {
                 buckets[currentPos] = DELETED;
                 found = true;
                 currentSize--;
-                //Else increment the position and check for a full loop
             } else if (buckets[currentPos] == null) {
                 emptyFound = true;
             } else {
