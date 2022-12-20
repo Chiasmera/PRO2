@@ -56,7 +56,7 @@ public class OelButik {
     private int koebOelForRestbeloeb(double beloeb) {
         int antal = 0;
         if (beloeb > pris + pant) {
-            antal += 1 + koebOelLineart(beloeb - pris);
+            antal += 1 + koebOelRekursivt(beloeb - pris);
         }
         return antal;
     }

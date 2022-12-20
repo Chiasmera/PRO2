@@ -49,5 +49,8 @@ public class Main {
         System.out.println("Der købes "+oenskedeOel+" øl, og til sidst er der brugt:");
         System.out.println(butik.prisForOelEnkeltvistKøbt(oenskedeOel));
 
+
+        System.out.println(butik.koebOelRekursivt(1202));
+
     }
 }
