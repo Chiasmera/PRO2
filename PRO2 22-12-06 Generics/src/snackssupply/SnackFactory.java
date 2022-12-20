@@ -16,5 +16,4 @@ public class SnackFactory
             System.out.println(e.getLocalizedMessage());
         }
     }
-
 }

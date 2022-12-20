@@ -21,7 +21,7 @@ import snacks.Snack;
 @TestMethodOrder(OrderAnnotation.class)
 class QueueTest
 {
-    private Queue<Snack> queue;
+    private Queue<Limb> queue;
 
     private Limb limb1;
     private Limb limb2;
@@ -63,22 +63,22 @@ class QueueTest
         queue.enqueue(limb5);
         queue.enqueue(limb6);
 
-        Limb meatToSmoke = (Limb) queue.dequeue();
+        Limb meatToSmoke = queue.dequeue();
         assertEquals(limb1.getType(), meatToSmoke.getType());
 
-        meatToSmoke = (Limb) queue.dequeue();
+        meatToSmoke =  queue.dequeue();
         assertEquals(limb2.getType(), meatToSmoke.getType());
 
-        meatToSmoke = (Limb) queue.dequeue();
+        meatToSmoke =  queue.dequeue();
         assertEquals(limb3.getType(), meatToSmoke.getType());
 
-        meatToSmoke = (Limb) queue.dequeue();
+        meatToSmoke =  queue.dequeue();
         assertEquals(limb4.getType(), meatToSmoke.getType());
 
-        meatToSmoke = (Limb) queue.dequeue();
+        meatToSmoke =  queue.dequeue();
         assertEquals(limb5.getType(), meatToSmoke.getType());
 
-        meatToSmoke = (Limb) queue.dequeue();
+        meatToSmoke =  queue.dequeue();
         assertEquals(limb6.getType(), meatToSmoke.getType());
 
         assertThrows(NoSuchElementException.class, () -> {
